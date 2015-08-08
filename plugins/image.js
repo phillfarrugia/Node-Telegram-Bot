@@ -29,7 +29,7 @@ var image = function() {
     };
 
     this.doMessage = function(msg, reply) {
-        var re = /(img|image|\\img|\\image|!img|!image)+\s+(.*)/i;
+        var re = /^(img|image|\\img|\\image|!img|!image)+\s+(.*)/i;
         var match = re.exec(msg.text);
 
         if (match) {
