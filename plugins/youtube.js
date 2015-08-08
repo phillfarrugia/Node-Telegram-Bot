@@ -9,7 +9,7 @@
         GOOGLE_API_KEY - https://code.google.com/apis/console/
 
     COMMANDS:
-        [yt, youtube, \yt, \youtube, !yt, !youtube] <query>
+        [yt, youtube, /yt, /youtube, !yt, !youtube] <query>
 
     EXAMPLE:
         You: !yt test
@@ -31,7 +31,7 @@ var yt = function(){
 
 
     this.doMessage = function (msg, reply) {
-        var re = /^(yt|youtube|\\yt|\\youtube|!yt|!youtube)+\s+(.*)/i;
+        var re = /^(yt|youtube|\/yt|\/youtube|!yt|!youtube)+\s+(.*)/i;
         var match = re.exec(msg.text);  
         
         if(match){ 

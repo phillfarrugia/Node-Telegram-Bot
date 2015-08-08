@@ -9,7 +9,7 @@
         GOOGLE_API_KEY - https://code.google.com/apis/console/
 
     COMMANDS:
-        !g <query>
+        [google, !g, !google, /g, /google] <query>
 
     EXAMPLE:
         You: !g <query>
@@ -32,17 +32,14 @@ var google = function(){
 
     this.doMessage = function (msg, reply) {
 
-        var re = /!g\s+(.*)/i; 
+        var re = /^(google|!g|!google|\/g|\/google)+\s+(.*)/i;
         var match = re.exec(msg.text);  
         
         if(match){ 
-            
             reply({type:"status", status: "typing"});
-
-            query = match[1].trim();
+            query = match[2].trim();
 
             if(query.length > 0){
-                console.log("\tGoogle: " + query);
                 link = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=" + encodeURIComponent(query) + "&key=" + process.env.GOOGLE_API_KEY;
                 
                 request(link, function (error, response, data) {

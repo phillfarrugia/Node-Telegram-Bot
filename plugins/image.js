@@ -9,7 +9,7 @@
         GOOGLE_API_KEY - https://code.google.com/apis/console/
 
     COMMANDS:
-        [img, image, !img, !image, \img, \image] <query>
+        [img, image, !img, !image, /img, /image] <query>
 
     EXAMPLE:
         You: img <query>
@@ -29,7 +29,7 @@ var image = function() {
     };
 
     this.doMessage = function(msg, reply) {
-        var re = /^(img|image|\\img|\\image|!img|!image)+\s+(.*)/i;
+        var re = /^(img|image|\/img|\image|!img|!image)+\s+(.*)/i;
         var match = re.exec(msg.text);
 
         if (match) {
