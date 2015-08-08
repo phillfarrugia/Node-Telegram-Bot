@@ -6,6 +6,7 @@
         Cristian Baldi
 
     CONFIGURATION:
+        Enable YouTube Data API v3
         GOOGLE_API_KEY - https://code.google.com/apis/console/
 
     COMMANDS:
@@ -20,6 +21,11 @@ var request = require('request');
 
 var yt = function(){
 
+    var GOOGLE_API_KEY = process.env.GOOGLE_API_KEY || ""
+
+    this.check = function(){
+        return GOOGLE_API_KEY == "" ? false : true;
+    };
 
     this.init = function(){
 
@@ -39,7 +45,8 @@ var yt = function(){
             query = match[2].trim();
 
             if(query.length > 0){
-                link = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + encodeURIComponent(query) + "&key=" + process.env.GOOGLE_API_KEY;
+                console.log("\tYT: " + query);
+                link = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + encodeURIComponent(query) + "&key=" + GOOGLE_API_KEY;
                 
                 request(link, function (error, response, data) {
                     if (!error && response.statusCode == 200) {
