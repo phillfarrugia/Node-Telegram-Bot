@@ -9,7 +9,7 @@
         GOOGLE_API_KEY - https://code.google.com/apis/console/
 
     COMMANDS:
-        !yt <query>
+        [yt, youtube, \yt, \youtube, !yt, !youtube] <query>
 
     EXAMPLE:
         You: !yt test
@@ -31,18 +31,14 @@ var yt = function(){
 
 
     this.doMessage = function (msg, reply) {
-
-        var re = /!yt\s+(.*)/i; 
+        var re = /^(yt|youtube|\\yt|\\youtube|!yt|!youtube)+\s+(.*)/i;
         var match = re.exec(msg.text);  
         
         if(match){ 
-
             reply({type:"status", status: "typing"});
-
-            query = match[1].trim();
+            query = match[2].trim();
 
             if(query.length > 0){
-                console.log("\tYT: " + query);
                 link = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + encodeURIComponent(query) + "&key=" + process.env.GOOGLE_API_KEY;
                 
                 request(link, function (error, response, data) {
