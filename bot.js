@@ -19,8 +19,9 @@ plugins.runPlugins(config.activePlugins);
     and awake via web request.
 */
 var http = require('http');
-var port = process.env.port || 4000;
+var port = process.env.PORT || 4000;
 http.createServer(function (req, res) {
+    console.log("Listening on port " + port);
 }).listen(port);
 
 bot.on('message', function(msg) {
