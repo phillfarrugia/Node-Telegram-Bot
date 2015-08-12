@@ -12,6 +12,17 @@ var bot = new TelegramBot(token, {
 console.log("The bot is starting...");
 plugins.runPlugins(config.activePlugins);
 
+/*
+    This is a workaround
+    allowing app to live on Heroku,
+    automatically sleep as a web dyno
+    and awake via web request.
+*/
+var http = require('http');
+var port = process.env.port || 4000;
+http.createServer(function (req, res) {
+}).listen(port);
+
 bot.on('message', function(msg) {
     if (msg.text) {
         var chatId = msg.chat.id;
