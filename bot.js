@@ -22,6 +22,9 @@ var http = require('http');
 var port = process.env.PORT || 4000;
 http.createServer(function (req, res) {
     console.log("Listening on port " + port);
+    res.send(JSON.stringify({
+        "status": "ok"
+    }));
 }).listen(port);
 
 bot.on('message', function(msg) {
