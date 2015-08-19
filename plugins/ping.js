@@ -27,6 +27,9 @@ var ping = function(){
     this.doMessage = function (msg, reply){
         if (msg.text.toLowerCase() == "ping")
             reply({type: 'text', text: 'pong'}); 
+
+        if (msg.text.toLowerCase() == "pong")
+            reply({type: 'text', text: 'ping'}); 
     };
 
 };
